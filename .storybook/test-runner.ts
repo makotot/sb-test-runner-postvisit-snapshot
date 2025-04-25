@@ -7,7 +7,7 @@ const config: TestRunnerConfig = {
   },
   async postVisit(page, context) {
     if (context.hasFailure) {
-      const screenshotPath = `./screenshots/${context.title.replace(/\s+/g, '_')}.png`;
+      const screenshotPath = `./screenshots/${context.id}_${new Date().toISOString().replace(/[:T.Z]/g, '')}.png`;
       await page.screenshot({ path: screenshotPath, fullPage: true });
       console.log(`Screenshot saved to: ${screenshotPath}`);
     }
